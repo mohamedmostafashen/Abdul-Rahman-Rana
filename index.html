@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دعوة زفاف</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff7f0;
+            color: #333;
+            text-align: center;
+        }
+
+        .container {
+            padding: 20px;
+        }
+        button {
+    font-family: 'Cairo', sans-serif; /* تم إضافة خط Cairo */
+    background-color: #d4a373;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.modal-content button {
+    font-family: 'Cairo', sans-serif; /* تم إضافة خط Cairo */
+    margin-top: 20px;
+    background-color: #d4a373;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+        .invitation-header {
+            margin-top: 30px;
+            font-size: 24px;
+            color: #6b4f4f;
+        }
+
+        .names {
+            font-size: 36px;
+            color: #4a2b2b;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        .details {
+            font-size: 20px;
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .date-time {
+            margin: 20px 0;
+            font-size: 24px;
+            color: #6b4f4f;
+        }
+
+        .venue {
+            font-size: 18px;
+            margin: 20px 0;
+        }
+
+        .footer {
+            font-size: 18px;
+            margin-top: 30px;
+            color: #6b4f4f;
+        }
+
+        .image-container {
+            margin: 20px auto;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid #d4a373;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+        }
+
+        button {
+            background-color: #d4a373;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #b08968;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: #333;
+            font-size: 20px;
+        }
+
+        .modal-content button {
+            margin-top: 20px;
+            background-color: #d4a373;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .modal-content button:hover {
+            background-color: #b08968;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="invitation-header">أنت مدعو لحضور حفل زفاف</div>
+
+        <div class="image-container">
+            <img src="https://i.postimg.cc/mkH9WzHZ/pngtree-3d-bride-and-groom-character-are-pose-wedding-png-image-13140794.png" alt="العروسين">
+        </div>
+
+        <div class="names">عبد الرحمن & رنا</div>
+
+        <div class="date-time">
+            الثلاثاء، 28 يناير<br>
+            الساعة التاسعة مساءً
+        </div>
+
+        <div class="venue">قاعة سي لا في في نادي الحداشر</div>
+
+        <button onclick="confirmAttendance()">تأكيد الحضور</button>
+
+        <div class="footer">نتمنى لكم ليلة سعيدة</div>
+    </div>
+
+    <div class="modal" id="attendanceModal">
+        <div class="modal-content">
+            <p>تنور وتشرف، تحياتي المهندس عبد الرحمن جمال راضي</p>
+            <button onclick="closeModal()">إغلاق</button>
+        </div>
+    </div>
+
+    <audio id="celebrationSound" src="https://www.soundjay.com/button/beep-07.wav"></audio>
+
+    <script>
+        function confirmAttendance() {
+            const modal = document.getElementById('attendanceModal');
+            const sound = document.getElementById('celebrationSound');
+            modal.style.display = 'flex';
+            sound.play();
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('attendanceModal');
+            modal.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
