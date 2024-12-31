@@ -19,30 +19,30 @@
         .container {
             padding: 20px;
         }
+
         button {
-    font-family: 'Cairo', sans-serif; /* تم إضافة خط Cairo */
-    background-color: #d4a373;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 18px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
+            font-family: 'Cairo', sans-serif; 
+            background-color: #d4a373;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-.modal-content button {
-    font-family: 'Cairo', sans-serif; /* تم إضافة خط Cairo */
-    margin-top: 20px;
-    background-color: #d4a373;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 18px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
+        .modal-content button {
+            font-family: 'Cairo', sans-serif; 
+            margin-top: 20px;
+            background-color: #d4a373;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
         .invitation-header {
             margin-top: 30px;
@@ -98,21 +98,7 @@
             border-radius: 50%;
         }
 
-        button {
-            background-color: #d4a373;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 18px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #b08968;
-        }
-
+        /* Modal for Attendance */
         .modal {
             display: none;
             position: fixed;
@@ -146,8 +132,34 @@
             cursor: pointer;
         }
 
-        .modal-content button:hover {
-            background-color: #b08968;
+        /* Iframe for Google Form */
+        .form-container {
+            display: none;
+            width: 80%;
+            height: 400px;
+            margin: 20px auto;
+            background-color: white;
+            border: 2px solid #d4a373;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .form-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* When form is visible with small text */
+        .form-container.show {
+            display: block;
+            width: 300px; /* Small size */
+            height: 200px; /* Small size */
+            background-color: rgba(255, 255, 255, 0.9); /* Slight transparent */
+        }
+
+        .form-container.show iframe {
+            font-size: 10px; /* Smaller text */
         }
     </style>
 </head>
@@ -171,6 +183,14 @@
         <button onclick="confirmAttendance()">تأكيد الحضور</button>
 
         <div class="footer">نتمنى لكم ليلة سعيدة</div>
+
+        <!-- تضمين نموذج Google Forms داخل الصفحة -->
+        <div class="form-container" id="formContainer">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdrx9dLliExp5RtnvMwgfg-JGA7xQ0fb0j74qU8viLyDj8rFg/viewform?usp=dialog" 
+                    width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">
+                    يتم تحميل النموذج...
+            </iframe>
+        </div>
     </div>
 
     <div class="modal" id="attendanceModal">
@@ -180,14 +200,13 @@
         </div>
     </div>
 
-    <audio id="celebrationSound" src="https://www.soundjay.com/button/beep-07.wav"></audio>
-
     <script>
         function confirmAttendance() {
+            const formContainer = document.getElementById('formContainer');
+            formContainer.classList.add('show'); // Show form in small size
             const modal = document.getElementById('attendanceModal');
-            const sound = document.getElementById('celebrationSound');
-            modal.style.display = 'flex';
-            sound.play();
+            modal.style.display = 'none'; // Close the modal
+            document.getElementById('formContainer').scrollIntoView({ behavior: 'smooth' }); // Scroll to the form
         }
 
         function closeModal() {
